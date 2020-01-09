@@ -23,7 +23,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/fonts/iconfonts/iconfont.css",
+              "src/assets/css/common/common.min.css"
             ],
             "scripts": []
           },
