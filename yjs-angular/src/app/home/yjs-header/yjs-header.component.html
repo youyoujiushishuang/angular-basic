@@ -1,76 +1,81 @@
 <header class="main-header">
-    <a class="logo">
-      <span class="logo-mini">
-        <img src="/assets/images/login/favicon.ico" alt="">
-      </span>
-      <span class="logo-lg">后台管理系统</span>
+  <a class="logo">
+    <span class="logo-mini">
+      <img src="/assets/images/login/favicon.ico" alt="">
+    </span>
+    <span class="logo-lg">后台管理系统</span>
+  </a>
+  <nav class="navbar navbar-static-top" role="navigation">
+    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <span class="sr-only">Toggle navigation</span>
     </a>
-    <nav class="navbar navbar-static-top" role="navigation">
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
-      <ul class="nav nav-tabs nav-addtabs disable-top-badge" style="padding-right:0px;overflow:hidden;">
-        <li class="dropdown pull-right tabrop" *ngIf="moreAreasList.length">
-          <a href="#" class="dorpdown-toggle" data-toggle="dorpdown">
-            <i class="glyphicon glyphicon-align-justify"></i>
-            <b class="caret"></b>
-          </a>
-          <ul class="dorpdown-menu">
-            <li>
-              <ul class="menu">
-                <li *ngFor="let ma of moreAreasList; let i=index" [class.active]="ma.functionName == activeFunctionName">
-                  <a (click)="clickAreas(ma)">
-                    <i class="icon iconfont iconfont-accessory"></i>
-                    <span>{{ma.functionName}}</span>
-                    <span class="pull-right-container"></span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-      
-          </ul>
-        </li>
-        <ng-container *ngFor="let am of showAreasList;let n = index">
-          <li class="area" [class.active]="am.functionName == activeFunctionName">
-            <a (click)="clickAreas(am)">
-              <span>{{am.functionName}}</span>
-              <span class="pull-right-container"></span>
-          <li class="area" [class.active]="am.functionName == activeFunctionName" (mouseover)="menuMouseover(am.functionId)" (mouseout)="menuMouseout(am.functionId)">
-            <a style="cursor: pointer;">
-              <i class="icon iconfont iconfont-accessory"></i>
-              <span>{{am.functionName}}</span>
-              <span class="pull-right-container"></span>
-            </a>
-            <ul [ngClass]="{'activeMenu': activeMenu == am.functionId , 'menuStyle':true}">
-              <li *ngFor="let child of am.children">
-                <a (click)="clickAreas(child)">
+    <ul class="nav nav-tabs nav-addtabs disable-top-badge" style="padding-right:0px;overflow:hidden;">
+      <li class="dropdown pull-right tabrop" *ngIf="moreAreasList.length">
+        <a href="#" class="dorpdown-toggle" data-toggle="dorpdown">
+          <i class="glyphicon glyphicon-align-justify"></i>
+          <b class="caret"></b>
+        </a>
+        <ul class="dorpdown-menu">
+          <li>
+            <ul class="menu">
+              <li *ngFor="let ma of moreAreasList; let i=index" [class.active]="ma.functionName == activeFunctionName">
+                <a (click)="clickAreas(ma)">
                   <i class="icon iconfont iconfont-accessory"></i>
-                  <span>{{child.functionName}}</span>
+                  <span>{{ma.functionName}}</span>
                   <span class="pull-right-container"></span>
-    </a>
-        </ng-container>
-      </ul>
-
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <li class="dropdown message-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="glyphicon glyphicon-align-justify"></i>
-              <span class="label label-danger">100</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">你有100条消息</li>
-              <li class="body">
-                <ul class="menu">
-                  <li>第一条待办</li>
-                </ul>
-              </li>
-              <li class="footer">
-                <a href="javascript:void(0)" >查看所有消息</a>
+                </a>
               </li>
             </ul>
           </li>
+    
         </ul>
-      </div>
+      </li>
+      <ng-container *ngFor="let am of showAreasList;let n = index">
+        <li class="area" [class.active]="am.functionName == activeFunctionName">
+          <a (click)="clickAreas(am)">
+            <span>{{am.functionName}}</span>
+            <span class="pull-right-container"></span>
+          </a>
+        </li>
+        <li class="area" [class.active]="am.functionName == activeFunctionName" (mouseover)="menuMouseover(am.functionId)" (mouseout)="menuMouseout(am.functionId)">
+          <a style="cursor: pointer;">
+            <i class="icon iconfont iconfont-accessory"></i>
+            <span>{{am.functionName}}</span>
+            <span class="pull-right-container"></span>
+          </a>
+          <ul [ngClass]="{'activeMenu': activeMenu == am.functionId , 'menuStyle':true}">
+            <li *ngFor="let child of am.children">
+              <a (click)="clickAreas(child)">
+                <i class="icon iconfont iconfont-accessory"></i>
+                <span>{{child.functionName}}</span>
+                <span class="pull-right-container"></span>
+              </a>
+            </li>
+          </ul>
+      </ng-container>
+    </ul>
+
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+        <li class="dropdown message-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-align-justify"></i>
+            <span class="label label-danger">100</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="header">你有100条消息</li>
+            <li class="body">
+              <ul class="menu">
+                <li>第一条待办</li>
+              </ul>
+            </li>
+            <li class="footer">
+              <a href="javascript:void(0)" >查看所有消息</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </header>
   
