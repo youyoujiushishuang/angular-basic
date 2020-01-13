@@ -1,0 +1,140 @@
+/**
+主体部分
+**/
+@import "set.scss";
+.wrapper{
+  width:100%;
+  height:calc(100vh - 1px);
+  overflow: hidden;
+}
+
+//头部
+.main-header{
+  height: $main-header-height;
+  background-color: #323438;
+  .logo{
+    float: left;
+    display: block;
+    height: 100%;
+    padding: 0 15px;
+    font-size: 20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: $main-header-height;
+    text-align: center;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+    .logo-mini{
+      display: none;
+    }
+    .logo-lg{
+      display: block;
+    }
+  }
+  .navbar{
+    min-height: $main-header-height;
+    margin-bottom: 0;
+    margin-left: $main-sidebar-width;
+    border: none;
+    border-radius: 0;
+    transition: margin-left 0.3 ease-in-out;
+  }
+  .sidebar-toggle{
+    float: left;
+    background-color: transparent;
+    background-image: none;
+    padding: 14px 15px;
+    height:$main-header-height;
+    font-family: iconfont;
+    &:before{
+      content: "\e6fd"
+    }
+  }
+  .sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border:0;
+  }
+
+  //一级菜单
+  .nav-addtabs{
+    position: absolute;
+    left: 45px;
+    top: 0;
+    z-index: 98;
+    height: $main-header-height;
+    margin: 0;
+    padding-right: 300px;
+    border: 0;
+    max-width: calc(100% - 44px);
+    & > li{
+      margin-right: 0;
+      & > a{
+        padding-top: 14ox;
+        padding-bottom: 14px;
+        font-size: 16px;
+        color: #fff;
+        & > .icon{
+          width:20px;
+          margin-top: -3px;
+          margin-right: 5px;
+          font-size: 18px;
+          vertical-align: middle;
+        }
+        &:after{
+          display: none;
+        }
+      }
+      &.dorpdown{
+        .dorpdown-toggle{
+          height: $main-header-height;
+          & > .icon{
+            width: auto;
+            font-size: 12px;
+          }
+        }
+        .dorpdown-menu{
+          position: absolute;
+          right: 0;
+          left: auto;
+          top:100%;
+          width: 160px;
+          padding: 0;
+          margin: 0;
+          color: $body-text-color;
+          a{
+            color: $body-text-color;
+          }
+          & > li{
+            position: relative;
+            .menu{
+              max-height: 220px;
+              overflow-x: hidden;
+              & > li > a{
+                display: block;
+                padding: 8px 10px;
+                line-height: 1.5;
+                white-space: nowrap;
+                border-bottom: 1px solid #f4f4f4;
+                & > .icon{
+                  width: 16px;
+                  font-size: 14px;
+                  top: 2px;
+                  margin-right: 5px;
+                }
+                &:hover{
+                  background-color: rgba(20, 184, 212, 0.1);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
