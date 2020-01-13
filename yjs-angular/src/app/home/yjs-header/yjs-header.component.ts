@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
 declare var $ : any
 @Component({
   selector: 'yjs-header',
@@ -20,16 +20,16 @@ export class YjsHeaderComponent implements OnInit {
   breakWidth:any[] = []  //所有菜单都展示的宽度区间
   ngOnInit() {
     this.areasModel= [
-      {functionName:"业务中心1", functionId:"1", children:[ {functionName:"发起流程", functionId:"11", children:[]}, {functionName:"待办流程", functionId:"12", children:[]}]},
-      {functionName:"开发实例2", functionId:"2", children:[ {functionName:"流程图", functionId:"21", children:[]}, {functionName:"图片预览", functionId:"22", children:[]}]},
-      {functionName:"开发实例3", functionId:"3", children:[ {functionName:"流程图", functionId:"31", children:[]}, {functionName:"图片预览", functionId:"32", children:[]}]},
-      {functionName:"开发实例4", functionId:"4", children:[ {functionName:"流程图", functionId:"41", children:[]}, {functionName:"图片预览", functionId:"42", children:[]}]},
-      {functionName:"开发实例5", functionId:"5", children:[ {functionName:"流程图", functionId:"51", children:[]}, {functionName:"图片预览", functionId:"52", children:[]}]},
-      {functionName:"开发实例6", functionId:"6", children:[ {functionName:"流程图", functionId:"61", children:[]}, {functionName:"图片预览", functionId:"62", children:[]}]},
-      {functionName:"开发实例7", functionId:"7", children:[ {functionName:"流程图", functionId:"71", children:[]}, {functionName:"图片预览", functionId:"72", children:[]}]},
-      {functionName:"开发实例8", functionId:"8", children:[ {functionName:"流程图", functionId:"81", children:[]}, {functionName:"图片预览", functionId:"82", children:[]}]},
-      {functionName:"开发实例9", functionId:"9", children:[ {functionName:"流程图", functionId:"91", children:[]}, {functionName:"图片预览", functionId:"92", children:[]}]},
-      {functionName:"开发实例10", functionId:"10", children:[ {functionName:"流程图", functionId:"101", children:[]}, {functionName:"图片预览", functionId:"102", children:[]}]},
+      {functionName:"业务中心1", css:null, functionId:"1", children:[ {functionName:"发起流程", functionId:"11", children:[]}, {functionName:"待办流程", functionId:"12", children:[]}]},
+      {functionName:"开发实例2", css:null, functionId:"2", children:[ {functionName:"流程图", functionId:"21", children:[]}, {functionName:"图片预览", functionId:"22", children:[]}]},
+      {functionName:"开发实例3", css:null, functionId:"3", children:[ {functionName:"流程图", functionId:"31", children:[]}, {functionName:"图片预览", functionId:"32", children:[]}]},
+      {functionName:"开发实例4", css:null, functionId:"4", children:[ {functionName:"流程图", functionId:"41", children:[]}, {functionName:"图片预览", functionId:"42", children:[]}]},
+      {functionName:"开发实例5", css:null, functionId:"5", children:[ {functionName:"流程图", functionId:"51", children:[]}, {functionName:"图片预览", functionId:"52", children:[]}]},
+      {functionName:"开发实例6", css:null, functionId:"6", children:[ {functionName:"流程图", functionId:"61", children:[]}, {functionName:"图片预览", functionId:"62", children:[]}]},
+      {functionName:"开发实例7", css:null, functionId:"7", children:[ {functionName:"流程图", functionId:"71", children:[]}, {functionName:"图片预览", functionId:"72", children:[]}]},
+      {functionName:"开发实例8", css:null, functionId:"8", children:[ {functionName:"流程图", functionId:"81", children:[]}, {functionName:"图片预览", functionId:"82", children:[]}]},
+      {functionName:"开发实例9", css:null, functionId:"9", children:[ {functionName:"流程图", functionId:"91", children:[]}, {functionName:"图片预览", functionId:"92", children:[]}]},
+      {functionName:"开发实例10",css:null, functionId:"10", children:[ {functionName:"流程图", functionId:"101", children:[]}, {functionName:"图片预览", functionId:"102", children:[]}]},
     ]
     this.showAreasList = this.areasModel
   }
@@ -37,20 +37,22 @@ export class YjsHeaderComponent implements OnInit {
   ngAfterViewInit(): void {
     var timer = setInterval(()=>{
       //设置定时器来获取dom元素
-      if(this.el.nativeElement.querySelectorAll("area").length != 0){
-        let lis = this.el.nativeElement.querySelectorAll("area")
+      if(this.el.nativeElement.querySelectorAll(".area").length != 0){
+        let lis = this.el.nativeElement.querySelectorAll(".area")
         let totalSpace = 0
         for (let i = 0; i < lis.length; i++) {
           totalSpace += parseInt(lis[i].clientWidth)         
           this.breakWidth.push(totalSpace) 
         }
-        console.log("菜单宽度区间:",this.breakWidth);
-        
         this.check()  //根据窗口宽度刷新菜单
         clearInterval(timer) //清除定时器
       }
     })
     
+  }
+
+  @HostListener("window:resize",["$event"])onresize(event){
+    this.check()
   }
 
   //鼠标移入菜单
@@ -76,15 +78,15 @@ export class YjsHeaderComponent implements OnInit {
     if(this.requiredSpace > this.availableSpace){
       //如果可用空间不够,就将最后一个放进下拉列表中
       this.numOfVisibleItems -= 1
-      this.showAreasList = this.areasModel.splice(0, this.numOfVisibleItems)
-      this.moreAreasList = this.areasModel.splice(this.numOfVisibleItems)
+      this.showAreasList = this.areasModel.slice(0, this.numOfVisibleItems)
+      this.moreAreasList = this.areasModel.slice(this.numOfVisibleItems)
       this.el.nativeElement.querySelector(".nav").style.overflow = this.moreAreasList.length ? null : 'hidden'  //下拉按钮是否展示
       this.check()
     } else if(this.availableSpace > this.breakWidth[this.numOfVisibleItems]){
       //如果可用宽度足够展示多一个菜单,就将下拉框中菜单减少一个
       this.numOfVisibleItems += 1
-      this.showAreasList = this.areasModel.splice(0, this.numOfVisibleItems)
-      this.moreAreasList = this.areasModel.splice(this.numOfVisibleItems)
+      this.showAreasList = this.areasModel.slice(0, this.numOfVisibleItems)
+      this.moreAreasList = this.areasModel.slice(this.numOfVisibleItems)
       this.el.nativeElement.querySelector(".nav").style.overflow = this.moreAreasList.length ? null : 'hidden'  //下拉按钮是否展示
       this.check()
     }

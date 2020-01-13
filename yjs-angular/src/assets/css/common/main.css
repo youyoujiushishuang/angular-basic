@@ -82,6 +82,7 @@
 
 .main-header .nav-addtabs > li {
   margin-right: 0;
+  height: 50px;
 }
 
 .main-header .nav-addtabs > li > a {
@@ -153,4 +154,83 @@
 
 .main-header .nav-addtabs > li.dorpdown .dorpdown-menu > li .menu > li > a:hover {
   background-color: rgba(20, 184, 212, 0.1);
+}
+
+.main-header .navbar-custom-menu {
+  padding-left: 50px;
+  float: right;
+}
+
+.main-header .navbar-right {
+  float: right;
+}
+
+.main-header .navbar-nav {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.main-header .navbar-nav > li {
+  position: relative;
+  display: block;
+}
+
+.main-header .navbar-nav > li > a {
+  position: relative;
+  display: block;
+}
+
+.main-header .navbar-nav > li > a > .label {
+  position: absolute;
+  top: 9px;
+  right: 7px;
+  text-align: center;
+  font-size: 9px;
+  padding: 2px 3px;
+  line-height: 0.9;
+}
+
+.main-header .navbar-nav > li .dropdown-menu {
+  position: absolute;
+  right: 0;
+  left: auto;
+  top: 100%;
+  width: 280px;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0px 0px 7px 1px #b8bec0;
+  color: #444;
+}
+
+.main-header .navbar-nav > li .dropdown-menu a {
+  color: #444;
+}
+
+.main-header .navbar-nav > li .dropdown-menu > li {
+  position: relative;
+}
+
+.main-header .navbar-nav > li .dropdown-menu > li.header {
+  padding: 7px 10px;
+  font-size: 14px;
+  border-bottom: 1px solid #ccc;
+}
+
+.main-header .navbar-nav > li .dropdown-menu > li .menu {
+  max-height: 220px;
+  overflow-x: hidden;
+}
+
+.main-header .navbar-nav > li .dropdown-menu > li .menu > li > a {
+  display: block;
+  padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-bottom: 1px solid #ccc;
+}
+
+.main-header .navbar-nav > li .dropdown-menu > li .menu > li > a:hover {
+  background-color: #ddd;
 }

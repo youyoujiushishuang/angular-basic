@@ -11,11 +11,11 @@
     </a>
     <ul class="nav nav-tabs nav-addtabs disable-top-badge" style="padding-right:0px;overflow:hidden;">
       <li class="dropdown pull-right tabrop" *ngIf="moreAreasList.length">
-        <a href="#" class="dorpdown-toggle" data-toggle="dorpdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <i class="glyphicon glyphicon-align-justify"></i>
           <b class="caret"></b>
         </a>
-        <ul class="dorpdown-menu">
+        <ul class="dropdown-menu">
           <li>
             <ul class="menu">
               <li *ngFor="let ma of moreAreasList; let i=index" [class.active]="ma.functionName == activeFunctionName">
@@ -31,13 +31,13 @@
         </ul>
       </li>
       <ng-container *ngFor="let am of showAreasList;let n = index">
-        <li class="area" [class.active]="am.functionName == activeFunctionName">
+        <li class="area" *ngIf="am.css != '1'" [class.active]="am.functionName == activeFunctionName">
           <a (click)="clickAreas(am)">
             <span>{{am.functionName}}</span>
             <span class="pull-right-container"></span>
           </a>
         </li>
-        <li class="area" [class.active]="am.functionName == activeFunctionName" (mouseover)="menuMouseover(am.functionId)" (mouseout)="menuMouseout(am.functionId)">
+        <li class="area" *ngIf="am.css == '1'" [class.active]="am.functionName == activeFunctionName" (mouseover)="menuMouseover(am.functionId)" (mouseout)="menuMouseout(am.functionId)">
           <a style="cursor: pointer;">
             <i class="icon iconfont iconfont-accessory"></i>
             <span>{{am.functionName}}</span>
