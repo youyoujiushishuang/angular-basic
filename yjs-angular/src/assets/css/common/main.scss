@@ -207,3 +207,292 @@
     }
   }
 }
+
+.navbar-nav{
+  float: left;
+  margin: 0;
+}
+.navbar-nav > li{
+  float: left;
+}
+.navbar-nav > li > a{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.dorpdown-menu{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  -webkit-box-shadow:0 6px 12px rgba(0,0,0,0.175);
+  box-shadow:0 6px 12px rgba(0,0,0,0.175);
+}
+.open > .dorpdown-menu{
+  display: block;
+}
+//头部左侧收起
+.sidebar-collapse .main-header{
+  .logo{
+    width: $main-header-height;
+    & > .logo-mini{
+      display: block;
+      margin-left: -15px;
+      margin-right: -15px;
+      font-size: 18px;
+    }
+    & > .logo-lg{
+      display: none;
+    }
+  }
+  .navbar{
+    margin-left: $main-header-height;
+  }
+}
+//左侧菜单
+.user-panel{
+  position: relative;
+  width: 100%;
+  padding: 9px;
+  overflow: hidden;
+  display: flex;
+  background-color: rgb(119, 160, 95);
+  &:before,
+  &:after{
+    content: "";
+    display: table;
+  }
+  & > .image > img{
+    width:100%;
+    max-width: 45px;
+    height: auto;
+  }
+  & > .info{
+    flex: 1;
+    padding: 5px 15px;
+    line-height: 33px;
+    width:calc(100% - 55px);
+    font-weight: 600;
+    @include ellipsis;
+    & > a{
+      text-decoration: none;
+      padding-right: 5px;
+      margin-top: 3px;
+      font-size: 11px;
+      & > .icon{
+        margin-right: 3px;
+      }
+    }
+    & > p{
+      font-weight: 600;
+      margin-bottom: 9px;
+      @include ellipsis;
+    }
+  }
+}
+
+.main-sidebar{
+  position: fixed;
+  top: $main-header-height;
+  min-height:100%;
+  width: $main-sidebar-width;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out , width 0.3s ease-in-out , -webkit-transform 0.3s ease-in-out;
+  .sidebar{
+    padding-bottom: 10px;
+    white-space: nowrap;
+  }
+  .sidebar-menu{
+    height:100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: $body-font-size;
+    background-color: cadetblue;
+    & > li{
+      position: relative;
+      //一级菜单
+      &.header{
+        margin: 6px 0;
+        padding: 10px 25px 10px 20px;
+        font-size: 16px;
+        @include ellipsis;
+      }
+      &.treeview{
+        border-left:3px solid transparent;
+        & > a{
+          position: relative;
+          padding: 12px 17px;
+          display: block;
+          font-size: 15px;
+          cursor: pointer;
+          & > .icon{
+            width:20px;
+            margin-right: 10px;
+            font-size: 16px;
+          }
+          .pull-right-container{
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            margin-top: -8px;
+            font-size: 17px;
+            i{
+              margin-top: -1px;
+            }
+          }
+        }
+        //三级菜单
+        .treeview-menu{
+          display: none;
+          padding: 8px 0 12px;
+          & > li{
+            &.active{
+              background-color: transparent;
+            }
+            & > a{
+              position: relative;
+              padding: 5px 20px;
+              padding-left: 47px;
+              display: block;
+              font-size: 14px;
+              cursor: pointer;
+              & > .icon{
+                width: 16px;
+                margin-top: -3px;
+                margin-right: 3px;
+                vertical-align: middle;
+              }
+              .pull-right-container{
+                font-size: 15px;
+                i{
+                  margin-top: 4px;
+                }
+              }
+            }
+          }
+        }
+        .treeview-menu4{
+          padding-bottom: 0;
+          & > li{
+            & > a{
+              padding-left: 70px;
+              .pull-right-container{
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                font-size: 13px;
+                i{
+                  margin-top: -6px;
+                }
+              }
+            }
+          }
+        }
+        .treeview-menu5{
+          padding-bottom: 0;
+          & >li{
+            & > a{
+              padding-left: 93px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//左侧菜单收起
+.sidebar-collapse{
+  .main-sidebar{
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0);
+    width: $collapse-main-sidebar-width !important;
+    z-index: 850;
+  }
+  .main-sidebar .user-panel > .info,
+  .sidebar-form,
+  .sidebar-menu > li > a > span,
+  .sidebar-menu > li > .treeview-menu, 
+  .sidebar-menu > li > a > .pull-right,
+  .sidebar-menu li.header{
+    display: none !important;
+    -webkit-transform: translateZ(0);
+  }
+  .sidebar-menu{
+    overflow: inherit;
+    & > li.treeview{
+      border: 0;
+      & > a{
+        padding-left: 14px;
+        padding-right: 14px;
+        height: 48px;
+        & > span{
+          border-top-right-radius: 4px;
+        }
+        & > .icon{
+          margin-right: 0;
+          font-size: 18px;
+        }
+      }
+      .treeview-menu{
+        border-top-right-radius: 4px;
+        & > li{
+          & > a{
+            padding-left: 30px;
+          }
+        }
+      }
+      &:hover > a > span:not(.pull-right),
+      &:hover > .treeview-menu{
+        display: block !important;
+        position: absolute;
+        width: 180px;
+        left: 50px;
+        background-color: #30729e;
+        color:#fff;
+      }
+      &:hover > .treeview-menu{
+        top: 47px;
+        margin-left: 0;
+      }
+    }
+    & > li:hover > a > span{
+      top: 0;
+      padding: 13px 5px 13px 30px;
+      background-color: inherit;
+    }
+    & > li:hover > a > .pull-right-container{
+      position: relative !important;
+      float: right;
+      width: auto !important;
+      padding-left: 0;
+      left: 180px !important;
+      top: -30px !important;
+      z-index: 900;
+    }
+    & > li:hover > a > .pull-right-container > .label:not(:first-of-type) {
+      display: none; 
+    } 
+  }
+}
+
+.sidebar-expanded-on-hover .main-footer,
+.sidebar-expanded-on-hover .content-sidebar{
+  margin-left: 50px;
+}
+
+.sidebar-expanded-on-hover .main-sidebar{
+  box-shadow: 3px 0 8px rgba(0,0,0,0.125);
+}

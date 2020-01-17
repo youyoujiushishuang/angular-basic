@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
+import { YjsMenuService } from '../../serves/yjs-menu.service';
 declare var $ : any
 @Component({
   selector: 'yjs-header',
@@ -7,7 +8,10 @@ declare var $ : any
 })
 export class YjsHeaderComponent implements OnInit {
 
-  constructor(private el: ElementRef) { }
+  constructor(
+    private el: ElementRef,
+    private Menus:YjsMenuService  //菜单服务  
+  ) { }
 
   areasModel:any[] = []  //所有菜单
   showAreasList:any[] = []  //能够显示的菜单数据
@@ -19,18 +23,9 @@ export class YjsHeaderComponent implements OnInit {
   requiredSpace:any  //必须的宽度
   breakWidth:any[] = []  //所有菜单都展示的宽度区间
   ngOnInit() {
-    this.areasModel= [
-      {functionName:"业务中心1", css:null, functionId:"1", children:[ {functionName:"发起流程", functionId:"11", children:[]}, {functionName:"待办流程", functionId:"12", children:[]}]},
-      {functionName:"开发实例2", css:null, functionId:"2", children:[ {functionName:"流程图", functionId:"21", children:[]}, {functionName:"图片预览", functionId:"22", children:[]}]},
-      {functionName:"开发实例3", css:null, functionId:"3", children:[ {functionName:"流程图", functionId:"31", children:[]}, {functionName:"图片预览", functionId:"32", children:[]}]},
-      {functionName:"开发实例4", css:null, functionId:"4", children:[ {functionName:"流程图", functionId:"41", children:[]}, {functionName:"图片预览", functionId:"42", children:[]}]},
-      {functionName:"开发实例5", css:null, functionId:"5", children:[ {functionName:"流程图", functionId:"51", children:[]}, {functionName:"图片预览", functionId:"52", children:[]}]},
-      {functionName:"开发实例6", css:null, functionId:"6", children:[ {functionName:"流程图", functionId:"61", children:[]}, {functionName:"图片预览", functionId:"62", children:[]}]},
-      {functionName:"开发实例7", css:null, functionId:"7", children:[ {functionName:"流程图", functionId:"71", children:[]}, {functionName:"图片预览", functionId:"72", children:[]}]},
-      {functionName:"开发实例8", css:null, functionId:"8", children:[ {functionName:"流程图", functionId:"81", children:[]}, {functionName:"图片预览", functionId:"82", children:[]}]},
-      {functionName:"开发实例9", css:null, functionId:"9", children:[ {functionName:"流程图", functionId:"91", children:[]}, {functionName:"图片预览", functionId:"92", children:[]}]},
-      {functionName:"开发实例10",css:null, functionId:"10", children:[ {functionName:"流程图", functionId:"101", children:[]}, {functionName:"图片预览", functionId:"102", children:[]}]},
-    ]
+    this.areasModel= this.Menus.getAreasVal()  //从菜单服务中获取所有模块数据
+    console.log('this.areasModel',this.areasModel);
+    
     this.showAreasList = this.areasModel
   }
 
@@ -93,6 +88,7 @@ export class YjsHeaderComponent implements OnInit {
   }
 
   clickAreas(menu){
+    this.Menus.setMenusVal(menu)  //点击模块之后,修改全局菜单数据
     this.activeFunctionName = menu.functionName
 
   }

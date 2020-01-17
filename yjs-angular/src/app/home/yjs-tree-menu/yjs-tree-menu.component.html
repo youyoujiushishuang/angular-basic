@@ -1,0 +1,56 @@
+<ul id="abcde" class="sidebar-menu tree">
+  <li class="header">{{areaName}}</li>
+  <li #li1 class="treeview" *ngFor="let Menu of Menus">
+    <!-- 二级菜单 -->
+    <a *ngIf="Menu.children.length <= 0" style="cursor:pointer;" (click)="routerLink(Menu)">
+      <i class="glyphicon glyphicon-align-justify"></i>
+      <span>{{Menu.functionName}}</span>
+    </a>
+    <a *ngIf="Menu.children.length > 0">
+      <i></i>
+      <span>{{Menu.functionName}}</span>
+      <span class="pull-right-container">
+        <i class="glyphicon glyphicon-align-justify" *ngIf="!li1.classList.contains('menu-open')"></i>
+        <i class="glyphicon glyphicon-align-justify" *ngIf="li1.classList.contains('menu-open')"></i>
+      </span>
+    </a>
+    <!-- 三级菜单 -->
+    <ul class="treeview-menu" *ngIf="Menu.children.length > 0">
+      <li #li2 [ngClass]="{'treeview': Me2.children.length>0}" *ngFor="let Me2 of Menu.children" [class.active]="activeId == Me2.functionId">
+        <a (click)="routerLink(Me2)" style="cursor:pointer;" *ngIf="Me2.children.length <= 0">
+          <i class="glyphicon glyphicon-align-justify"></i>{{Me2.functionName}}
+        </a>
+        <a *ngIf="Me2.children.length > 0" style="cursor:pointer;">
+          <i class="glyphicon glyphicon-align-justify"></i>{{Me2.functionName}}
+          <span class="pull-right-container">
+            <i class="glyphicon glyphicon-align-justify" *ngIf="!li2.classList.contains('menu-open')"></i>
+            <i class="glyphicon glyphicon-align-justify" *ngIf="li2.classList.contains('menu-open')"></i>
+          </span>
+        </a>
+        <!-- 四级菜单 -->
+        <ul class="treeview-menu treeview-menu4" *ngIf="Me2.children.length > 0">
+          <li #li3 [ngClass]="{'treeview': Me3.children.length>0}" *ngFor="let Me3 of Me2.children" [class.active]="activeId == Me3.functionId">
+            <a (click)="routerLink(Me3)" style="cursor:pointer;" *ngIf="Me3.children.length <= 0">
+              <i class="glyphicon glyphicon-align-justify"></i>{{Me3.functionName}}
+            </a>
+            <a *ngIf="Me3.children.length > 0" style="cursor:pointer;">
+              <i class="glyphicon glyphicon-align-justify"></i>{{Me3.functionName}}
+              <span class="pull-right-container">
+                <i class="glyphicon glyphicon-align-justify" *ngIf="!li3.classList.contains('menu-open')"></i>
+                <i class="glyphicon glyphicon-align-justify" *ngIf="li3.classList.contains('menu-open')"></i>
+              </span>
+            </a>
+            <!-- 五级菜单 -->
+            <ul class="treeview-menu treeview-menu5" *ngIf="Me3.children.length > 0">
+              <li *ngFor="let Me4 of Me3.children" [class.active]="activeId == Me4.functionId">
+                <a (click)="routerLink(Me4)" style="cursor:pointer;" *ngIf="Me4.children.length <= 0">
+                  <i class="glyphicon glyphicon-align-justify"></i>{{Me4.functionName}}
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>

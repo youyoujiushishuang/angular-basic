@@ -1,3 +1,31 @@
+%clearfix{
+  *zoom:1;
+  &:after{
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+%btnspace{
+  letter-spacing: 2px;
+  text-indent: 2px;
+}
+
+@mixin  ellipsis($n: 1) {
+  overflow: hidden;
+  @if($n > 1){
+    display: -webkit-box;
+    white-space: normal !important;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -weblit-line-clamp:$n;
+  } @else{
+    white-space: normal;
+    text-overflow: ellipsis;
+  }
+}
+
 $body-text-color: #444;  //系统文字颜色
 $body-font-family:"Microsoft Yahei"; //系统字体-微软雅黑
 $body-font-size:14px;  //系统字体大小
@@ -8,3 +36,4 @@ $body-border-radius:2px;  //系统圆角
 
 $main-header-height:50px;  //默认头部高度
 $main-sidebar-width:230px;  //默认左侧宽度
+$collapse-main-sidebar-width:50px;  //菜单收起时左侧宽度

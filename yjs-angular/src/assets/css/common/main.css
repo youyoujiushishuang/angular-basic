@@ -234,3 +234,329 @@
 .main-header .navbar-nav > li .dropdown-menu > li .menu > li > a:hover {
   background-color: #ddd;
 }
+
+.navbar-nav {
+  float: left;
+  margin: 0;
+}
+
+.navbar-nav > li {
+  float: left;
+}
+
+.navbar-nav > li > a {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.dorpdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+
+.open > .dorpdown-menu {
+  display: block;
+}
+
+.sidebar-collapse .main-header .logo {
+  width: 50px;
+}
+
+.sidebar-collapse .main-header .logo > .logo-mini {
+  display: block;
+  margin-left: -15px;
+  margin-right: -15px;
+  font-size: 18px;
+}
+
+.sidebar-collapse .main-header .logo > .logo-lg {
+  display: none;
+}
+
+.sidebar-collapse .main-header .navbar {
+  margin-left: 50px;
+}
+
+.user-panel {
+  position: relative;
+  width: 100%;
+  padding: 9px;
+  overflow: hidden;
+  display: flex;
+  background-color: #77a05f;
+}
+
+.user-panel:before, .user-panel:after {
+  content: "";
+  display: table;
+}
+
+.user-panel > .image > img {
+  width: 100%;
+  max-width: 45px;
+  height: auto;
+}
+
+.user-panel > .info {
+  flex: 1;
+  padding: 5px 15px;
+  line-height: 33px;
+  width: calc(100% - 55px);
+  font-weight: 600;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+}
+
+.user-panel > .info > a {
+  text-decoration: none;
+  padding-right: 5px;
+  margin-top: 3px;
+  font-size: 11px;
+}
+
+.user-panel > .info > a > .icon {
+  margin-right: 3px;
+}
+
+.user-panel > .info > p {
+  font-weight: 600;
+  margin-bottom: 9px;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+}
+
+.main-sidebar {
+  position: fixed;
+  top: 50px;
+  min-height: 100%;
+  width: 230px;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out , width 0.3s ease-in-out , -webkit-transform 0.3s ease-in-out;
+}
+
+.main-sidebar .sidebar {
+  padding-bottom: 10px;
+  white-space: nowrap;
+}
+
+.main-sidebar .sidebar-menu {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 14px;
+  background-color: cadetblue;
+}
+
+.main-sidebar .sidebar-menu > li {
+  position: relative;
+}
+
+.main-sidebar .sidebar-menu > li.header {
+  margin: 6px 0;
+  padding: 10px 25px 10px 20px;
+  font-size: 16px;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+}
+
+.main-sidebar .sidebar-menu > li.treeview {
+  border-left: 3px solid transparent;
+}
+
+.main-sidebar .sidebar-menu > li.treeview > a {
+  position: relative;
+  padding: 12px 17px;
+  display: block;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.main-sidebar .sidebar-menu > li.treeview > a > .icon {
+  width: 20px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.main-sidebar .sidebar-menu > li.treeview > a .pull-right-container {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  margin-top: -8px;
+  font-size: 17px;
+}
+
+.main-sidebar .sidebar-menu > li.treeview > a .pull-right-container i {
+  margin-top: -1px;
+}
+
+.main-sidebar .sidebar-menu > li.treeview .treeview-menu {
+  display: none;
+  padding: 8px 0 12px;
+}
+
+.main-sidebar .sidebar-menu > li.treeview .treeview-menu > li.active {
+  background-color: transparent;
+}
+
+.main-sidebar .sidebar-menu > li.treeview .treeview-menu > li > a {
+  position: relative;
+  padding: 5px 20px;
+  padding-left: 47px;
+  display: block;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.main-sidebar .sidebar-menu > li.treeview .treeview-menu > li > a > .icon {
+  width: 16px;
+  margin-top: -3px;
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
+.main-sidebar .sidebar-menu > li.treeview .treeview-menu > li > a .pull-right-container {
+  font-size: 15px;
+}
+
+.main-sidebar .sidebar-menu > li.treeview .treeview-menu > li > a .pull-right-container i {
+  margin-top: 4px;
+}
+
+.main-sidebar .sidebar-menu > li.treeview .treeview-menu4 {
+  padding-bottom: 0;
+}
+
+.main-sidebar .sidebar-menu > li.treeview .treeview-menu4 > li > a {
+  padding-left: 70px;
+}
+
+.main-sidebar .sidebar-menu > li.treeview .treeview-menu4 > li > a .pull-right-container {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  font-size: 13px;
+}
+
+.main-sidebar .sidebar-menu > li.treeview .treeview-menu4 > li > a .pull-right-container i {
+  margin-top: -6px;
+}
+
+.main-sidebar .sidebar-menu > li.treeview .treeview-menu5 {
+  padding-bottom: 0;
+}
+
+.main-sidebar .sidebar-menu > li.treeview .treeview-menu5 > li > a {
+  padding-left: 93px;
+}
+
+.sidebar-collapse .main-sidebar {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+  width: 50px !important;
+  z-index: 850;
+}
+
+.sidebar-collapse .main-sidebar .user-panel > .info,
+.sidebar-collapse .sidebar-form,
+.sidebar-collapse .sidebar-menu > li > a > span,
+.sidebar-collapse .sidebar-menu > li > .treeview-menu,
+.sidebar-collapse .sidebar-menu > li > a > .pull-right,
+.sidebar-collapse .sidebar-menu li.header {
+  display: none !important;
+  -webkit-transform: translateZ(0);
+}
+
+.sidebar-collapse .sidebar-menu {
+  overflow: inherit;
+}
+
+.sidebar-collapse .sidebar-menu > li.treeview {
+  border: 0;
+}
+
+.sidebar-collapse .sidebar-menu > li.treeview > a {
+  padding-left: 14px;
+  padding-right: 14px;
+  height: 48px;
+}
+
+.sidebar-collapse .sidebar-menu > li.treeview > a > span {
+  border-top-right-radius: 4px;
+}
+
+.sidebar-collapse .sidebar-menu > li.treeview > a > .icon {
+  margin-right: 0;
+  font-size: 18px;
+}
+
+.sidebar-collapse .sidebar-menu > li.treeview .treeview-menu {
+  border-top-right-radius: 4px;
+}
+
+.sidebar-collapse .sidebar-menu > li.treeview .treeview-menu > li > a {
+  padding-left: 30px;
+}
+
+.sidebar-collapse .sidebar-menu > li.treeview:hover > a > span:not(.pull-right),
+.sidebar-collapse .sidebar-menu > li.treeview:hover > .treeview-menu {
+  display: block !important;
+  position: absolute;
+  width: 180px;
+  left: 50px;
+  background-color: #30729e;
+  color: #fff;
+}
+
+.sidebar-collapse .sidebar-menu > li.treeview:hover > .treeview-menu {
+  top: 47px;
+  margin-left: 0;
+}
+
+.sidebar-collapse .sidebar-menu > li:hover > a > span {
+  top: 0;
+  padding: 13px 5px 13px 30px;
+  background-color: inherit;
+}
+
+.sidebar-collapse .sidebar-menu > li:hover > a > .pull-right-container {
+  position: relative !important;
+  float: right;
+  width: auto !important;
+  padding-left: 0;
+  left: 180px !important;
+  top: -30px !important;
+  z-index: 900;
+}
+
+.sidebar-collapse .sidebar-menu > li:hover > a > .pull-right-container > .label:not(:first-of-type) {
+  display: none;
+}
+
+.sidebar-expanded-on-hover .main-footer,
+.sidebar-expanded-on-hover .content-sidebar {
+  margin-left: 50px;
+}
+
+.sidebar-expanded-on-hover .main-sidebar {
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.125);
+}
